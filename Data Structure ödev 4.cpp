@@ -2,12 +2,14 @@
 #include <stdlib.h>
 #include <string.h>
 
+// Ogrenci yapısı tanımlanır
 struct Student {
     char name[50];
     int id;
     struct Student* next;
 };
 
+// Yeni bir ogrenci olusturan fonksiyon
 struct Student* createStudent(const char* name, int id) {
     struct Student* newStudent = (struct Student*)malloc(sizeof(struct Student));
     strcpy(newStudent->name, name);
@@ -15,24 +17,26 @@ struct Student* createStudent(const char* name, int id) {
     newStudent->next = NULL;
     return newStudent;
 }
-
+// Ogrenci kaydini liste basina ekleyen fonksiyon
 void insertStudent(struct Student** head, const char* name, int id) {
     struct Student* newStudent = createStudent(name, id);
     newStudent->next = *head;
     *head = newStudent;
 }
 
+// İstenen ogrenciyi ada göre arayan fonksiyon
 struct Student* searchStudentByName(struct Student* head, const char* name) {
     struct Student* current = head;
     while (current != NULL) {
         if (strcmp(current->name, name) == 0) {
-            return current; // �stenen ad� bulduk
+            return current; // Ýstenen adý bulduk
         }
         current = current->next;
     }
-    return NULL; // �stenen ad� bulamad�k
+    return NULL; // Ýstenen adý bulamadýk
 }
 
+// Ogrenci bilgilerini ekrana yazdiran fonksiyon
 void printStudent(struct Student* student) {
     if (student == NULL) {
         printf("Ogrenci kaydi bulunamadi.\n");
