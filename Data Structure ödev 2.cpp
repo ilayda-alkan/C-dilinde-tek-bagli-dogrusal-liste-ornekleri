@@ -7,6 +7,7 @@ struct Node {
     struct Node* next;
 };
 
+// Yeni bir dügüm oluşturan fonksiyon
 struct Node* generateNode(int data) {
     struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
     newNode->data = data;
@@ -14,6 +15,7 @@ struct Node* generateNode(int data) {
     return newNode;
 }
 
+// Sirali bir sekilde dügüm ekleyen fonksiyon
 void insertSorted(struct Node** head, int data) {
     struct Node* newNode = generateNode(data);
     struct Node* current;
@@ -31,6 +33,7 @@ void insertSorted(struct Node** head, int data) {
     }
 }
 
+// Listeyi ekrana yazdiran fonksiyon
 void printList(struct Node* head) {
     struct Node* current = head;
     while (current != NULL) {
@@ -45,7 +48,7 @@ int main() {
     srand(time(NULL));
 
     for (int i = 0; i < 10; i++) {
-        int randomNum = rand() % 100; // 0 ile 99 aras�nda rastgele say�lar
+        int randomNum = rand() % 100; // 0 ile 99 arasinda rastgele sayilar
         insertSorted(&head, randomNum);
     }
 
