@@ -1,11 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+// Tek bagli liste dÃ¼gÃ¼mleri iÃ§in yapi tanimlanir
 struct Node {
     int data;
     struct Node* next;
 };
 
+// Yeni bir dÃ¼ÄŸÃ¼m oluÅŸturan fonksiyon
 struct Node* generateNode(int data) {
     struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
     newNode->data = data;
@@ -14,9 +16,9 @@ struct Node* generateNode(int data) {
 }
 
 struct Node* generateSeparatedList() {
-    struct Node* head = NULL; // Liste baþý
-    struct Node* oddList = NULL; // Tek sayýlarýn listesi
-    struct Node* evenList = NULL; // Çift sayýlarýn listesi
+    struct Node* head = NULL; // Liste baÅŸÄ±
+    struct Node* oddList = NULL; // Tek sayÄ±larÄ±n listesi
+    struct Node* evenList = NULL; // Ã‡ift sayÄ±larÄ±n listesi
     int input;
 
     printf("Klavyeden sayilari Giriniz: (-1 girdiginizde cikis yapacaktir):\n");
@@ -31,11 +33,11 @@ struct Node* generateSeparatedList() {
         struct Node* newNode = generateNode(input);
         
         if (input % 2 == 1) {
-            // Tek sayýlarý baþa ekle
+            // Tek sayilari basa ekle
             newNode->next = oddList;
             oddList = newNode;
         } else {
-            // Çift sayýlarý sona ekle
+            // Ã‡ift sayilari sona ekle
             if (evenList == NULL) {
                 evenList = newNode;
             } else {
@@ -48,7 +50,7 @@ struct Node* generateSeparatedList() {
         }
     }
 
-    // Tek ve çift sayý listelerini birleþtir
+    // Tek ve Ã§ift sayi listelerini birlestir
     struct Node* temp = oddList;
     while (temp != NULL && temp->next != NULL) {
         temp = temp->next;
@@ -76,7 +78,7 @@ void printList(struct Node* head) {
 int main() {
     struct Node* head = generateSeparatedList();
 
-    printf("Girdiginiz sayilarin listesi : (tekler basa ciftler sonda olucak þekilde siralanir):\n");
+    printf("Girdiginiz sayilarin listesi : (tekler basta ciftler sonda olucak ÅŸekilde siralanir):\n");
     printList(head);
 
     return 0;
