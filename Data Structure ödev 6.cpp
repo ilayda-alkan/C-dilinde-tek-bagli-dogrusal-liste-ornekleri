@@ -2,12 +2,14 @@
 #include <stdlib.h>
 #include <string.h>
 
+// Kayit yapisi tanimlanir
 struct Record {
     char name[50];
     int age;
     struct Record* next;
 };
 
+// Yeni bir kayit olusturan fonksiyon
 struct Record* createRecord(const char* name, int age) {
     struct Record* newRecord = (struct Record*)malloc(sizeof(struct Record));
     strcpy(newRecord->name, name);
@@ -16,12 +18,14 @@ struct Record* createRecord(const char* name, int age) {
     return newRecord;
 }
 
+// Kaydi listeye ekleyen fonksiyon
 void insertRecord(struct Record** head, const char* name, int age) {
     struct Record* newRecord = createRecord(name, age);
     newRecord->next = *head;
     *head = newRecord;
 }
 
+// En uzun ismi ve uzunlugunu bulan fonksiyon
 void findLongestNameRecord(struct Record* head, char** longestName, int* longestNameLength) {
     if (head == NULL) {
         printf("Liste bos.\n");
